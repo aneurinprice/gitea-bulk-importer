@@ -3,8 +3,11 @@ package internal
 var Args struct {
 	Input	string   `arg:"positional"`
 	Type	string   `arg:"-t,--type" help:"User or Org to import" validate:"required,oneof=User user Org org"`
-	Verbose	bool     `arg:"-v,--verbose" help:"verbosity level"`
-	DryRun	string   `arg:"--dry-run" help:"Do not import, just print what would be imported"`
+	LogLevel	string    `arg:"-l,--log-level" help:"Desired LogLevel" validate:"omitempty,oneof=Trace Debug Info Warning Error Fatal Panic"`
+	DryRun	bool   `arg:"-d,--dry-run" help:"Do not import, just print what would be imported"`
+	IncludeForks	bool `arg:"-f,--forks" help:"Include/Exclude forks in the import"`
+	Rename	string	`arg:"--rename" help:"Rename User/Org in Gitea" validate:"omitempty,alphanum"`
+	// TODO: Add regex include/exclude filters
 }
 
 type githubCredentials struct {
@@ -20,11 +23,11 @@ type giteaCredentials struct {
 
 var GithubLogin = githubCredentials{
 	Username: "aneurinprice",
-	Password: "#########################################",
+	Password: "################",
 }
 
 var GiteaLogin = giteaCredentials{
 	Username:	"aneurinprice",
-	Password:	"#########################################",
-	GiteaUrl:	"#########################################",
+	Password:	"###############",
+	GiteaUrl:	"https://gitea.services.nyeprice.local",
 }

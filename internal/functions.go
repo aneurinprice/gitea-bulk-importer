@@ -10,6 +10,7 @@ import (
 	"github.com/alexflint/go-arg"
 	"github.com/cavaliergopher/grab/v3"
 	"github.com/go-playground/validator/v10"
+	log "github.com/sirupsen/logrus"
 )
 
 func Init() error {
@@ -17,6 +18,15 @@ func Init() error {
 	validate := validator.New(validator.WithRequiredStructEnabled())
 	err := validate.Struct(&Args)
 	CheckIfError(err)
+	var logLevel string
+	if Args.LogLevel == ""{
+		logLevel = "Warning"
+	} else {
+		logLevel = Args.LogLevel
+	}
+	parsedLogLevel, err := log.ParseLevel(logLevel)
+	CheckIfError(err)
+	log.SetLevel(parsedLogLevel)
 	return nil
 }
 

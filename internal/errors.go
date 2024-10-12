@@ -9,4 +9,3 @@ func CheckIfError(err error) {
 		log.Error(err)
 	}
 }
-
