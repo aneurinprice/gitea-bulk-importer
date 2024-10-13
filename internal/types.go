@@ -6,8 +6,8 @@ var Args struct {
 	LogLevel	string    `arg:"-l,--log-level" help:"Desired LogLevel" validate:"omitempty,oneof=Trace Debug Info Warning Error Fatal Panic"`
 	DryRun	bool   `arg:"-d,--dry-run" help:"Do not import, just print what would be imported"`
 	IncludeForks	bool `arg:"-f,--forks" help:"Include/Exclude forks in the import"`
-	Rename	string	`arg:"--rename" help:"Rename User/Org in Gitea" validate:"omitempty,alphanum"`
-	Regex	string	`arg:"-r,--regex" help:"Regex to filter repo names" validate:"omitempty"`
+	Rename	string	`arg:"-r,--rename" help:"Rename User/Org in Gitea" validate:"omitempty,alphanum"`
+	Regex	string	`arg:"-s,--regex" help:"Regex to filter repo names" validate:"omitempty"`
 }
 
 type githubCredentials struct {
@@ -19,15 +19,4 @@ type giteaCredentials struct {
 	Username string	
 	Password string
 	GiteaUrl string
-}
-
-var GithubLogin = githubCredentials{
-	Username: "aneurinprice",
-	Password: "################",
-}
-
-var GiteaLogin = giteaCredentials{
-	Username:	"aneurinprice",
-	Password:	"#############",
-	GiteaUrl:	"https://gitea.services.nyeprice.local",
 }

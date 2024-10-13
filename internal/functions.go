@@ -13,11 +13,24 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+
+var GithubLogin = githubCredentials{
+	Username: os.Getenv("GITHUB_USERNAME"),
+	Password: os.Getenv("GITHUB_PASSWORD"),
+}
+
+var GiteaLogin = giteaCredentials{
+	Username:	os.Getenv("GITEA_USERNAME"),
+	Password:	os.Getenv("GITEA_PASSWORD"),
+	GiteaUrl:	os.Getenv("GITEA_URL"),
+}
+
 func Init() error {
 	arg.MustParse(&Args)
 	validate := validator.New(validator.WithRequiredStructEnabled())
 	err := validate.Struct(&Args)
 	CheckIfError(err)
+
 	var logLevel string
 	if Args.LogLevel == ""{
 		logLevel = "Debug"
