@@ -20,7 +20,7 @@ func Init() error {
 	CheckIfError(err)
 	var logLevel string
 	if Args.LogLevel == ""{
-		logLevel = "Warning"
+		logLevel = "Debug"
 	} else {
 		logLevel = Args.LogLevel
 	}

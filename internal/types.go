@@ -7,7 +7,7 @@ var Args struct {
 	DryRun	bool   `arg:"-d,--dry-run" help:"Do not import, just print what would be imported"`
 	IncludeForks	bool `arg:"-f,--forks" help:"Include/Exclude forks in the import"`
 	Rename	string	`arg:"--rename" help:"Rename User/Org in Gitea" validate:"omitempty,alphanum"`
-	// TODO: Add regex include/exclude filters
+	Regex	string	`arg:"-r,--regex" help:"Regex to filter repo names" validate:"omitempty"`
 }
 
 type githubCredentials struct {
@@ -28,6 +28,6 @@ var GithubLogin = githubCredentials{
 
 var GiteaLogin = giteaCredentials{
 	Username:	"aneurinprice",
-	Password:	"###############",
+	Password:	"#############",
 	GiteaUrl:	"https://gitea.services.nyeprice.local",
 }

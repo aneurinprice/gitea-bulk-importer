@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/google/go-github/v66/github"
 	log "github.com/sirupsen/logrus"
+	"regexp"
 )
 
 var GithubListOptions = github.ListOptions{
@@ -58,11 +59,22 @@ func FilterRepoList(repoList []*github.Repository) (filteredRepoList []*github.R
 		if !Args.IncludeForks && *repo.Fork {
 			log.Warn("Skipping forked repo: ", *repo.FullName)
 			droppedRepos++
+		} else if len(Args.Regex) > 0 {
+			regex, err := regexp.Compile(Args.Regex)
+			CheckIfError(err)
+			if !regex.MatchString(*repo.Name) {
+				log.Warn("Skipping non-matching regex repo: ", *repo.FullName)
+				droppedRepos++
+			} else {
+				// fix this
+				filteredRepoList = append(filteredRepoList, repo)
+			}
 		} else {
 			filteredRepoList = append(filteredRepoList, repo)
 			log.Debug("Adding repo: ", *repo.FullName)
 		}
 	}
+
 	log.Debug("Before filtering: ", len(repoList))
 	log.Debug("Dropped repos: ", droppedRepos)
 	log.Debug("After filtering: ", len(filteredRepoList))

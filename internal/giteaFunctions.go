@@ -110,11 +110,12 @@ func ImportGiteaRepo (giteaClient *gitea.Client, RepoList []*github.Repository, 
 			})
 
 			if err != nil && strings.Contains(err.Error(), "The repository with the same name already exists."){
+				log.Warn("Repo already exists, skipping")
 				err = nil
 			}
 
 			CheckIfError(err)
-			log.Info("Successfully imported " + *repo.Name)
+			log.Warn("Successfully imported " + *repo.Name)
 		} else {
 			log.Warn("Dry run: Would have imported " + *repo.Name)
 		}
