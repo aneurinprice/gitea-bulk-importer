@@ -1,5 +1,7 @@
+---
 kind: pipeline
 name: default
+type: docker
 
 platform:
   arch: arm64
