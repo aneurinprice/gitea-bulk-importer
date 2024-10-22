@@ -1,0 +1,20 @@
+pipeline {
+    kubernetes {
+        defaultContainer 'kaniko'
+        yaml '''
+kind: Pod
+spec:
+  containers:
+  - name: kaniko
+    image: golang:1.19
+'''
+   }
+    }
+    stages {
+        stage('Build') {
+            steps {
+                go build cmd/gitea-bulk-importer/main.go 
+            }
+        }
+    }
+}
