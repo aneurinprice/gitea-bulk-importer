@@ -6,8 +6,13 @@ type: docker
 platform:
   arch: amd64
 
+trigger:
+  branch:
+  - maint
+
 steps:
 - name: build
   image: golang
   commands:
   - go build cmd/gitea-bulk-importer/gitea-bulk-exporter.go
+  - gitea-bulk-exporter --help
