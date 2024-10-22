@@ -10,5 +10,4 @@ steps:
 - name: build
   image: golang
   commands:
-  - go get
   - go build cmd/gitea-bulk-importer/gitea-bulk-exporter.go
