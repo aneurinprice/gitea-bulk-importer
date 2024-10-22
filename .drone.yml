@@ -1,0 +1,12 @@
+kind: pipeline
+name: default
+
+platform:
+  arch: arm64
+
+steps:
+- name: build
+  image: golang
+  commands:
+  - go get
+  - go build cmd/gitea-bulk-importer/gitea-bulk-exporter.go
