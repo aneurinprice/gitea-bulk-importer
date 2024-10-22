@@ -1,14 +1,14 @@
 pipeline {
-    agent: {
-    kubernetes {
-        defaultContainer 'golang'
-        yaml '''
-kind: Pod
-spec:
-  containers:
-  - name: golang
-    image: golang:1.19
-'''
+    agent {
+        kubernetes {
+            defaultContainer 'golang'
+            yaml '''
+            kind: Pod
+            spec:
+            containers:
+            - name: golang
+                image: golang:1.19
+            '''
    }
     }
     stages {
