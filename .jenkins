@@ -1,11 +1,12 @@
 pipeline {
+    agent: {
     kubernetes {
-        defaultContainer 'kaniko'
+        defaultContainer 'golang'
         yaml '''
 kind: Pod
 spec:
   containers:
-  - name: kaniko
+  - name: golang
     image: golang:1.19
 '''
    }
