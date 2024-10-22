@@ -8,7 +8,7 @@ platform:
 
 trigger:
   branch:
-  - maint
+  - main
 
 steps:
 - name: build
