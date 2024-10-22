@@ -5,9 +5,9 @@ pipeline {
             yaml '''
 kind: Pod
 spec:
-containers:
-- name: golang
-    image: golang:1.19
+    containers:
+        - name: golang
+        image: golang:1.19
 '''
    }
     }
