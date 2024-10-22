@@ -13,7 +13,7 @@ spec:
     stages {
         stage('Build') {
             steps {
-                go build cmd/gitea-bulk-importer/main.go 
+                sh 'go build cmd/gitea-bulk-importer/main.go'
             }
         }
     }
