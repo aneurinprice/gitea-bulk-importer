@@ -59,7 +59,7 @@ Set the following environmental variables:
 GITHUB_USERNAME="YourUsername"
 GITHUB_PASSWORD="YourGithubPassword"
 GITEA_USERNAME="YourUsername"
-GITEA_PASSWORD="YourGiteaPassword"
+GITEA_PASSWORD="YourGiteaPassword" # This should be a generated application token!!!!!
 GITEA_URL="https://your.gitea.host"
 ```
 
